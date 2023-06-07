@@ -14,12 +14,12 @@ def before_each():
     browser.open('https://google.com')
 
 
-def test_task_demo1(before_each):
+def test_search_results_found(before_each):
     browser.element('[name="q"]').should(be.blank).type('yashaka/selene').press_enter()
     browser.element('[id="search"]').should(have.text('Selene - User-oriented Web UI browser tests in Python'))
 
 
-def test_task_demo2(before_each):
+def test_search_results_not_found(before_each):
     no_result_text = 'thisIsTheRandomStringThatShouldNotBeFoundInGooGle'
     browser.element('[name="q"]').should(be.blank).type(no_result_text).press_enter()
     browser.element('[id="res"]').should(have.text('Your search - ' + no_result_text + ' - did not match any documents.'))
